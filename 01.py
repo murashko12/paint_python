@@ -24,6 +24,22 @@ class Window(QMainWindow):
         brushMenu = mainMenu.addMenu("Толщина линии")           # задаем толщину линии
         brushColor = mainMenu.addMenu("Цвет")                   # задаем цвет линии
         backgroundColor = mainMenu.addMenu("Цвет заднего фона") # задаём цвет заднего фона
+        
+        save_Action = QAction("Сохранить", self)   # сохранение изображения
+        save_Action.setShortcut("Ctrl+S")
+        fileMenu.addAction(save_Action)
+        save_Action.triggered.connect(self.save)
+    
+    #-------------------------------------------------------------------------------------------------
+    def save(self):                                            # Функционал для кнопки сохранения
+        save_file = QFileDialog.getSaveFileName(self, "Save Image", "", "PNG(*.png);;JPEG(*.jpg *.jpeg);; ALL Files(*.*)")
+        if save_file == "":
+            return
+        self.image.save(save_file)
+
+
+
+
 
 
 
