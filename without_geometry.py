@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMenuBar, QMenu, QAction, QFileDialog, QGraphicsScene, QGraphicsView
-from PyQt5.QtGui import QIcon, QImage, QPainter, QPen
+from PyQt5.QtGui import QIcon, QImage, QPainter, QPen, QBrush
 from PyQt5.QtCore import Qt, QPoint
 import sys
 
@@ -7,6 +7,11 @@ import sys
 class Window(QMainWindow):
     def __init__(self):
         super().__init__()
+
+
+
+        #width = self.width()
+        #height = self.height()
 
         self.setWindowTitle("Paint")
         self.setGeometry(0, 0, 1000, 800)
@@ -35,9 +40,6 @@ class Window(QMainWindow):
         clear_Action.setShortcut("Ctrl+C")
         fileMenu.addAction(clear_Action)
         clear_Action.triggered.connect(self.clear)
-
-
-
 #-------------------------------------------------------------------------------------------------
         onepxAction = QAction("1px", self) # толщина линии в 1 пикселя
         onepxAction.setShortcut("Ctrl+O")
@@ -110,7 +112,7 @@ class Window(QMainWindow):
         back_ground_Color.triggered.connect(self.Black_back_ground)
 
         back_ground_Color = QAction(QIcon("git_project_1/red.png"), "Красный", self) # цвет фона красный
-        back_ground_Color.setShortcut("Ctrl+B")
+        back_ground_Color.setShortcut("Ctrl+R")
         backgroundColor.addAction(back_ground_Color)
         back_ground_Color.triggered.connect(self.Red_back_ground)
 
