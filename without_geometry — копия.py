@@ -8,6 +8,16 @@ class Window(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        '''
+        stage = QGraphicsScene()
+        brush = QBrush(Qt.red)
+        pen = QPen(Qt.yellow)
+        pen.setWidth(9)
+        saw = QGraphicsView(stage, self)
+        saw.setGeometry(0, 0, 1000, 800)
+
+        krug = stage.addEllipse(10, 10, 200, 200, pen, brush)
+'''
 
 
         #width = self.width()
