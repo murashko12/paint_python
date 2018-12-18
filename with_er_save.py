@@ -175,11 +175,28 @@ class Window(QMainWindow):
         canvasPainter.drawImage(self.rect(), self.image, self.image.rect())
 #-------------------------------------------------------------------------------------------------
 
-    def save(self):                                            # Функционал для кнопки сохранения
-        save_file = QFileDialog.getSaveFileName(self, "Save Image", "4756", "PNG(*.png);;JPEG(*.jpg *.jpeg);; ALL Files(*.*)")
-        if save_file == "":
-            return
-        self.image.save(save_file)
+    def saveFileDialog(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getSaveFileName(self,"QFileDialog.getSaveFileName()","","All Files (*);;Text Files (*.txt)", options=options)
+        if fileName:
+            print(fileName)
+    def saveFileDialog(self):
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        fileName, _ = QFileDialog.getSaveFileName(self,"QFileDialog.getSaveFileName()","","All Files (*);;Text Files (*.txt)", options=options)
+        if fileName:
+            print(fileName)
+        self.image.save(str(fileName), "PNG")
+    def save(self):
+
+        path, _ = QFileDialog.getSaveFileName(self, "Save file", "", "PNG(*.png);;JPEG(*.jpg *.jpeg);; ALL Files(*.*)")
+        print(path)
+        if path:
+            self.image.save(path);
+        else:
+            self.image.save('noname.png')
+
         #----------------%
     def clear(self):                                            # Функция очистки
         self.image.fill(self.bg)
